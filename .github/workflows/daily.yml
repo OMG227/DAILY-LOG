@@ -1,19 +1,15 @@
 name: Daily Green Commit
-
 on:
   schedule:
-    - cron: '0 8 * * *'   # jam 8 pagi UTC = jam 3 sore WIB
+    - cron: '0 8 * * *'
   workflow_dispatch:
-
 jobs:
   auto-commit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Update log
         run: echo "Update on $(date)" >> log.txt
-
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
